@@ -7,9 +7,9 @@ module.exports = wrap(async function (req, res) {
     const profileid = req.params.profileid;
     let uuid = req.params.uuid;
     if (!isUuid(uuid)) {
-        const mojang_response = await makeRequest(res, `https://api.ashcon.app/mojang/v2/user/${uuid}`);
-        if (mojang_response?.data?.uuid) {
-            uuid = mojang_response.data.uuid.replace(/-/g, '');
+        const mojang_response = await makeRequest(res, `https://api.mojang.com/users/profiles/minecraft/${uuid}`);
+        if (mojang_response?.data?.id) {
+            uuid = mojang_response.data.id
         }
     }
 
