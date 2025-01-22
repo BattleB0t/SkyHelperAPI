@@ -5,7 +5,7 @@ module.exports = async () => {
     async function refreshCollections() {
         const collections = [];
 
-        const collections_res = (await axios.get('https://api.hypixel.net/resources/skyblock/collections')).data.collections;
+        const collections_res = (await axios.get('https://api.hypixel.net/v2/resources/skyblock/collections')).data.collections;
         for (const type of Object.keys(collections_res)) {
             for (const collection_type of Object.keys(collections_res[type].items)) {
                 const tiers = [];
@@ -29,7 +29,7 @@ module.exports = async () => {
             console.log(err);
         });
 
-        const items_res = (await axios.get('https://api.hypixel.net/resources/skyblock/items')).data.items;
+        const items_res = (await axios.get('https://api.hypixel.net/v2/resources/skyblock/items')).data.items;
         fs.writeFileSync('./json/items.json', JSON.stringify(items_res, null, 2));
     }
 
