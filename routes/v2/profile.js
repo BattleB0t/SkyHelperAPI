@@ -13,7 +13,7 @@ module.exports = wrap(async function (req, res) {
         }
     }
 
-    const profileRes = await makeRequest(res, `https://api.hypixel.net/skyblock/profiles?key=${process.env.HYPIXEL_API_KEY}&uuid=${uuid}`);
+    const profileRes = await makeRequest(res, `https://api.hypixel.net/v2/skyblock/profiles?key=${process.env.HYPIXEL_API_KEY}&uuid=${uuid}`);
     const profile = await parseNetworthProfile(profileRes, uuid, profileid, res);
 
     return res.status(200).json({ status: 200, data: profile });
